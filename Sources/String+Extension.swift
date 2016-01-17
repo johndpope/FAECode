@@ -1,6 +1,6 @@
+let zeroRange = 0...0
+
 extension String {
-
-
   public init?(data: [Int8]) {
     if let string = String.fromCString(data + [0]) {
       self.init(string)
@@ -33,12 +33,41 @@ extension String {
 ///var hello      = helloWorld[0...4]
 ///print(hello)
 extension String {
-  subscript (r: Range<Int>) -> String {
-    get {
-      let startIndex = self.startIndex.advancedBy(r.startIndex)
-      let endIndex   = self.startIndex.advancedBy(r.endIndex)
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = self.startIndex.advancedBy(r.startIndex)
+            let endIndex   = self.startIndex.advancedBy(r.endIndex)
 
-      return self[Range(start: startIndex, end: endIndex)]
-    }
+            return self[Range(start: startIndex, end: endIndex)]
+        }
   }
+
+  private func _find(subString: String) -> Int {
+      var start = startIndex
+
+      repeat {
+          let other = self[Range(start: start, end: endIndex)]
+          if other.hasPrefix(subString){
+              return startIndex.distanceTo(start)
+          }
+
+          start++
+
+      } while start != endIndex
+
+      return -1
+  }
+
+  func find(subString: String, range:Range<Int> = zeroRange) -> Int {
+
+      if range == zeroRange {
+          return self._find(subString)
+      } else {
+          let rangeStr = self[range]
+
+          return rangeStr._find(subString)
+      }
+
+  }
+
 }
