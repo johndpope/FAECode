@@ -87,5 +87,19 @@ extension String {
 
     }
 
+    /**
+        Gets the character at the specified index as String.
+        If index is negative it is assumed to be relative to the end of the String.
+        :param: index Position of the character to get
+        :returns: Character as String or nil if the index is out of bounds
+    */
+    subscript (index: Int) -> String? {
+        if let char = Array(self).get(index) {
+            return String(char)
+        }
+
+        return nil
+    }
+
 
 }
