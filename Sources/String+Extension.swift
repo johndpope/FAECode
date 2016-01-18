@@ -70,4 +70,22 @@ extension String {
 
   }
 
+  func split(str: Character, numSplit: Int = 0) -> [String]  {
+
+        if numSplit == 0 {
+            let selfArr = self.characters.split{$0 == str}
+
+            let strArray = selfArr.map { String($0) }
+            return strArray
+        } else {
+            let selfArr = self.characters.split(numSplit) {$0 == str}
+
+            let strArray = selfArr.map { String($0) }
+            return strArray
+        }
+
+
+    }
+
+
 }
