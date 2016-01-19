@@ -1,3 +1,5 @@
+import Foundation
+
 let zeroRange = 0...0
 
 extension String {
@@ -94,8 +96,8 @@ extension String {
         :returns: Character as String or nil if the index is out of bounds
     */
     subscript (index: Int) -> String? {
-        if let char = Array(self).get(index) {
-            return String(char)
+        if index < self.characters.count {
+            return self[index...index]
         }
 
         return nil
