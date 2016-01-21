@@ -35,7 +35,7 @@ extension String {
 ///var hello      = helloWorld[0...4]
 ///print(hello)
 extension String {
-    subscript (r: Range<Int>) -> String {
+    public subscript (r: Range<Int>) -> String {
         get {
             let startIndex = self.startIndex.advancedBy(r.startIndex)
             let endIndex   = self.startIndex.advancedBy(r.endIndex)
