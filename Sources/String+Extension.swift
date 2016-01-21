@@ -44,7 +44,7 @@ extension String {
         }
   }
 
-  private func _find(subString: String) -> Int {
+    private func _Find(subString: String) -> Int {
       var start = startIndex
 
       repeat {
@@ -60,7 +60,7 @@ extension String {
       return -1
   }
 
-  func find(subString: String, range:Range<Int> = zeroRange) -> Int {
+    public func Find(subString: String, range:Range<Int> = zeroRange) -> Int {
 
       if range == zeroRange {
           return self._find(subString)
@@ -72,7 +72,7 @@ extension String {
 
   }
 
-  func split(str: Character, numSplit: Int = 0) -> [String]  {
+    public func Split(str: Character, numSplit: Int = 0) -> [String]  {
 
         if numSplit == 0 {
             let selfArr = self.characters.split{$0 == str}
@@ -95,7 +95,7 @@ extension String {
         :param: index Position of the character to get
         :returns: Character as String or nil if the index is out of bounds
     */
-    subscript (index: Int) -> String? {
+    public subscript (index: Int) -> String? {
         if index < self.characters.count {
             return self[index...index]
         }
