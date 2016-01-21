@@ -63,11 +63,11 @@ extension String {
     public func Find(subString: String, range:Range<Int> = zeroRange) -> Int {
 
       if range == zeroRange {
-          return self._find(subString)
+          return self._Find(subString)
       } else {
           let rangeStr = self[range]
 
-          return rangeStr._find(subString)
+          return rangeStr._Find(subString)
       }
 
   }
