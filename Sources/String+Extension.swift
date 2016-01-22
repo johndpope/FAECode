@@ -67,7 +67,7 @@ extension String {
       } else {
           let rangeStr = self[range]
 
-          return rangeStr._Find(subString)
+          return rangeStr._Find(subString) + range.startIndex
       }
 
   }
