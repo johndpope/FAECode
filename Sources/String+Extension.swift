@@ -2,6 +2,8 @@ import Foundation
 
 let zeroRange = 0...0
 
+public let NotFound = -1
+
 extension String {
   public init?(data: [Int8]) {
     if let string = String.fromCString(data + [0]) {
@@ -53,11 +55,11 @@ extension String {
               return startIndex.distanceTo(start)
           }
 
-          start++
+          start = start.successor()
 
       } while start != endIndex
 
-      return -1
+      return NotFound
   }
 
     public func Find(subString: String, range:Range<Int> = zeroRange) -> Int {
@@ -67,7 +69,9 @@ extension String {
       } else {
           let rangeStr = self[range]
 
-          return rangeStr._Find(subString) + range.startIndex
+          let findIndex = rangeStr._Find(subString)
+          guard findIndex != NotFound else { return NotFound }
+          return findIndex + range.startIndex
       }
 
   }
